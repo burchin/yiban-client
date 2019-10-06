@@ -1,6 +1,7 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
+import { AtButton } from 'taro-ui';
 import { observer, inject } from '@tarojs/mobx'
 
 import './index.scss'
@@ -67,8 +68,8 @@ class Index extends Component {
     return (
       <View className='index'>
         <Text>hello</Text>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
+        <AtButton type='primary' onClick={this.increment}>+</AtButton>
+        <AtButton type='primary' onClick={this.decrement}>-</AtButton>
         <Button onClick={this.incrementAsync}>Add Async</Button>
         <Text>{counter}</Text>
       </View>
