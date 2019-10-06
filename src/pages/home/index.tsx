@@ -15,13 +15,13 @@ type PageStateProps = {
   }
 }
 
-interface Index {
+interface Home {
   props: PageStateProps;
 }
 
 @inject('counterStore')
 @observer
-class Index extends Component {
+class Home extends Component {
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -77,4 +77,4 @@ class Index extends Component {
   }
 }
 
-export default Index  as ComponentType
+export default Home  as ComponentType
