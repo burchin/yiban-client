@@ -1,8 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
+import counterStore from './store/counter'
 import { Provider } from '@tarojs/mobx'
 import Home from './pages/home'
-
-import counterStore from './store/counter'
 
 import './app.scss'
 
@@ -29,6 +28,7 @@ class App extends Component {
       color: '#000',
       selectedColor: '#1296db',
       backgroundColor: '#fff',
+      borderStyle: 'white',
       list: [
         {
           pagePath: 'pages/home/index',
@@ -44,11 +44,15 @@ class App extends Component {
         },
         {
           pagePath: 'pages/mall/index',
-          text: '商城'
+          text: '商城',
+          iconPath: './assets/images/tab/mall.png',
+          selectedIconPath: './assets/images/tab/mall_selected.png'
         },
         {
           pagePath: 'pages/my/index',
-          text: '我的'
+          text: '我的',
+          iconPath: './assets/images/tab/my.png',
+          selectedIconPath: './assets/images/tab/my_selected.png'
         }
       ]
     }
@@ -56,8 +60,6 @@ class App extends Component {
 
   componentDidMount () {}
 
-  // 在 App 类中的 render() 函数没有实际作用
-  // 请勿修改此函数
   render () {
     return (
       <Provider store={store}>
