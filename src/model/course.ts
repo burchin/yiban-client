@@ -1,4 +1,5 @@
 type Course = {
+    id: number;
     title: string;
     beginTime: string;
     endTime: string;

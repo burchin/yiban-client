@@ -1,3 +1,5 @@
+@import '../../assets/styles/common.scss';
+
 .banner {
   width: 100%;
 }
@@ -11,6 +13,6 @@
 
     text-indent: 48rpx;
     line-height:  48rpx;
-    font-size: 24rpx;
+    font-size: $content-size;
   }
 }

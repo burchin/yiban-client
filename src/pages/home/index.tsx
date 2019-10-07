@@ -31,7 +31,7 @@ class Home extends Component {
         <Image className="banner" mode="widthFix" src={picBanner} />
         <View className="content">
           {this.store.content.map(text => (
-            <Text>{text}</Text>
+            <Text key={Math.random()}>{text}</Text>
           ))}
         </View>
       </View>

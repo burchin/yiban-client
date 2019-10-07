@@ -1,6 +1,37 @@
 @import '../../assets/styles/common.scss';
 
 .box {
+  display: flex;
+  flex-direction: column;
+  padding: $space;
+  
   border: 1rpx solid $border-color;
   border-radius: 8rpx;
+
+  .title {
+    font-size: $title-size-primary;
+  }
+
+  .tip {
+    display: flex;
+    align-items: center;
+    padding: $space-small;
+
+    font-size: $title-size-extra;
+    color: #999;
+
+    image {
+      width: 32rpx;
+      margin-right: $space-small;
+    }
+  }
+
+  .line {
+    border: 0.5rpx solid $border-color1;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+  }
 }
