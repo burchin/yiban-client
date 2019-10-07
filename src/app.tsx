@@ -32,7 +32,7 @@ class App extends Component {
       list: [
         {
           pagePath: 'pages/home/index',
-          text: '首页',
+          text: '简介',
           iconPath: './assets/images/tab/home.png',
           selectedIconPath: './assets/images/tab/home_selected.png'
         },
