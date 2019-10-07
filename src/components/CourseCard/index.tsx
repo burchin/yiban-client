@@ -23,8 +23,13 @@ interface CourseCard {
 class CourseCard extends Component {
   store = new Store();
 
-  onOrder = () => {
+  onDetail = () => {
+    Taro.navigateTo({ url: './detail' });
+  };
+
+  onOrder = e => {
     this.store.setModalVisable(true);
+    e.stopPropagation();
   };
 
   onCloseModal = () => {
@@ -35,30 +40,28 @@ class CourseCard extends Component {
     const { modalVisable } = this.store;
 
     return (
-      <View className="box" style={this.props.style}>
-        <Text className="title">{this.props.data.title}</Text>
-        <View className="tip">
-          <Image mode="widthFix" src={picTime} />
-          <Text>{`${this.props.data.beginTime} - ${this.props.data.endTime}`}</Text>
-        </View>
-        <View className="tip">
-          <Image mode="widthFix" src={picAddress} />
-          <Text>{this.props.data.address}</Text>
-        </View>
-        <View className="line"></View>
-        <View className="content">
-          <View className="money">
-            <Image mode="widthFix" src={picMoney} />
-            <Text>{this.props.data.money}</Text>
+      <View>
+        <View className="box" style={this.props.style} onClick={this.onDetail}>
+          <Text className="title">{this.props.data.title}</Text>
+          <View className="tip">
+            <Image mode="widthFix" src={picTime} />
+            <Text>{`${this.props.data.beginTime} - ${this.props.data.endTime}`}</Text>
           </View>
-          {/* <Text>{this.props.data.status}</Text> */}
-          <AtButton
-            type="primary"
-            size="small"
-            onClick={this.onOrder.bind(this)}
-          >
-            预约
-          </AtButton>
+          <View className="tip">
+            <Image mode="widthFix" src={picAddress} />
+            <Text>{this.props.data.address}</Text>
+          </View>
+          <View className="line"></View>
+          <View className="content">
+            <View className="money">
+              <Image mode="widthFix" src={picMoney} />
+              <Text>{this.props.data.money}</Text>
+            </View>
+            {/* <Text>{this.props.data.status}</Text> */}
+            <AtButton type="primary" size="small" onClick={this.onOrder}>
+              预约
+            </AtButton>
+          </View>
         </View>
         <AtModal
           isOpened={modalVisable}

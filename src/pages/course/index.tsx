@@ -5,19 +5,6 @@ import { observer } from '@tarojs/mobx';
 import { CourseCard } from '../../components';
 import Store from './store';
 
-type PageStateProps = {
-  counterStore: {
-    counter: number;
-    increment: Function;
-    decrement: Function;
-    incrementAsync: Function;
-  };
-};
-
-interface Course {
-  props: PageStateProps;
-}
-
 @observer
 class Course extends Component {
   store = new Store(); 

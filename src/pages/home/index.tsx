@@ -6,19 +6,6 @@ import Store from './store';
 import './style.scss';
 import picBanner from './images/banner.png';
 
-type PageStateProps = {
-  counterStore: {
-    counter: number;
-    increment: Function;
-    decrement: Function;
-    incrementAsync: Function;
-  };
-};
-
-interface Home {
-  props: PageStateProps;
-}
-
 class Home extends Component {
   store = new Store();
   config: Config = {
