@@ -23,13 +23,15 @@ interface CourseCard {
 class CourseCard extends Component {
   store = new Store();
 
-  onDetail = () => {
+  onDetail = e => {
+    if (e.target.id == 'order') {
+      return;
+    }
     Taro.navigateTo({ url: './detail' });
   };
 
-  onOrder = e => {
+  onOrder = () => {
     this.store.setModalVisable(true);
-    e.stopPropagation();
   };
 
   onCloseModal = () => {
@@ -41,7 +43,11 @@ class CourseCard extends Component {
 
     return (
       <View>
-        <View className="box" style={this.props.style} onClick={this.onDetail}>
+        <View
+          className="box"
+          style={this.props.style}
+          onClick={this.onDetail}
+        >
           <Text className="title">{this.props.data.title}</Text>
           <View className="tip">
             <Image mode="widthFix" src={picTime} />
@@ -58,7 +64,12 @@ class CourseCard extends Component {
               <Text>{this.props.data.money}</Text>
             </View>
             {/* <Text>{this.props.data.status}</Text> */}
-            <AtButton type="primary" size="small" onClick={this.onOrder}>
+            <AtButton
+              id="order"
+              type="primary"
+              size="small"
+              onClick={this.onOrder.bind(this)}
+            >
               预约
             </AtButton>
           </View>
