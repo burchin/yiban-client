@@ -1,17 +1,17 @@
-import { ComponentType } from 'react'
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
-import { observer, inject } from '@tarojs/mobx'
-
+import { ComponentType } from 'react';
+import Taro, { Component, Config } from '@tarojs/taro';
+import { View, Text } from '@tarojs/components';
+import { observer, inject } from '@tarojs/mobx';
+import { CourseCard } from '../../components';
 
 type PageStateProps = {
   counterStore: {
-    counter: number,
-    increment: Function,
-    decrement: Function,
-    incrementAsync: Function
-  }
-}
+    counter: number;
+    increment: Function;
+    decrement: Function;
+    incrementAsync: Function;
+  };
+};
 
 interface Course {
   props: PageStateProps;
@@ -20,7 +20,6 @@ interface Course {
 @inject('counterStore')
 @observer
 class Course extends Component {
-
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -30,17 +29,17 @@ class Course extends Component {
    */
   config: Config = {
     navigationBarTitleText: '首页'
-  }
+  };
 
-  componentWillMount () { }
+  componentWillMount() {}
 
-  render () {
+  render() {
     return (
-      <View className='index'>
-        <Text>Course</Text>
+      <View className="index">
+        <CourseCard />
       </View>
-    )
+    );
   }
 }
 
-export default Course  as ComponentType
+export default Course as ComponentType;

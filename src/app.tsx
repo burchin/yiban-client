@@ -32,25 +32,25 @@ class App extends Component {
       list: [
         {
           pagePath: 'pages/home/index',
-          text: '简介',
+          text: 'AAA',
           iconPath: './assets/images/tab/home.png',
           selectedIconPath: './assets/images/tab/home_selected.png'
         },
         {
           pagePath: 'pages/course/index',
-          text: '约课',
+          text: 'BBB',
           iconPath: './assets/images/tab/course.png',
           selectedIconPath: './assets/images/tab/course_selected.png'
         },
         {
           pagePath: 'pages/mall/index',
-          text: '商城',
+          text: 'CCC',
           iconPath: './assets/images/tab/mall.png',
           selectedIconPath: './assets/images/tab/mall_selected.png'
         },
         {
           pagePath: 'pages/my/index',
-          text: '我的',
+          text: 'DDD',
           iconPath: './assets/images/tab/my.png',
           selectedIconPath: './assets/images/tab/my_selected.png'
         }
