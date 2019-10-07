@@ -2,7 +2,7 @@ import { ComponentType } from 'react';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { Image, View, Text } from '@tarojs/components';
 
-import './index.scss';
+import './style.scss';
 import picBanner from './images/banner.png';
 
 type PageStateProps = {

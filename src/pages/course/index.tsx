@@ -1,8 +1,9 @@
 import { ComponentType } from 'react';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import { observer, inject } from '@tarojs/mobx';
 import { CourseCard } from '../../components';
+import Store from './store';
 
 type PageStateProps = {
   counterStore: {
@@ -28,15 +29,22 @@ class Course extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: 'BBB',
+    usingComponents: {
+      CourseCard: '../../components/CourseCard/index'
+    }
   };
+
+  store = new Store();
 
   componentWillMount() {}
 
   render() {
     return (
       <View className="index">
-        <CourseCard />
+        {this.store.list.map(item => (
+          <CourseCard data={item} />
+        ))}
       </View>
     );
   }
