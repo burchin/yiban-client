@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   padding: $space;
-  
+
   border: 1rpx solid $border-color;
   border-radius: 8rpx;
 
@@ -18,20 +18,32 @@
     padding: $space-small;
 
     font-size: $title-size-extra;
-    color: #999;
+    color: $title-color-extra;
 
     image {
-      width: 32rpx;
+      width: 24rpx;
       margin-right: $space-small;
     }
   }
 
   .line {
     border: 0.5rpx solid $border-color1;
+    margin: $space 0;
   }
 
   .content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    .money {
+      display: flex;
+      align-items: center;
+
+      image {
+        width: 64rpx;
+        margin-right: $space;
+      }
+    }
   }
 }

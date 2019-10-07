@@ -1,6 +1,6 @@
 import { ComponentType } from 'react';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import { observer } from '@tarojs/mobx';
 import { CourseCard } from '../../components';
 import Store from './store';

@@ -1,10 +1,14 @@
 import Taro, { Component } from '@tarojs/taro';
+import { observer } from '@tarojs/mobx';
 import { Image, View, Text } from '@tarojs/components';
+import { AtButton, AtModal } from 'taro-ui';
 import { Course } from '../../model';
+import Store from './store';
 import './style.scss';
 
 import picTime from './images/time.png';
 import picAddress from './images/address.png';
+import picMoney from './images/money.png';
 
 type Props = {
   data: Course;
@@ -15,8 +19,21 @@ interface CourseCard {
   props: Props;
 }
 
+@observer
 class CourseCard extends Component {
+  store = new Store();
+
+  onOrder = () => {
+    this.store.setModalVisable(true);
+  };
+
+  onCloseModal = () => {
+    this.store.setModalVisable(false);
+  };
+
   render() {
+    const { modalVisable } = this.store;
+
     return (
       <View className="box" style={this.props.style}>
         <Text className="title">{this.props.data.title}</Text>
@@ -30,9 +47,30 @@ class CourseCard extends Component {
         </View>
         <View className="line"></View>
         <View className="content">
-          <Text>{this.props.data.money}</Text>
-          <Text>{this.props.data.status}</Text>
+          <View className="money">
+            <Image mode="widthFix" src={picMoney} />
+            <Text>{this.props.data.money}</Text>
+          </View>
+          {/* <Text>{this.props.data.status}</Text> */}
+          <AtButton
+            type="primary"
+            size="small"
+            onClick={this.onOrder.bind(this)}
+          >
+            预约
+          </AtButton>
         </View>
+        <AtModal
+          isOpened={modalVisable}
+          closeOnClickOverlay={false}
+          onClose={this.onCloseModal}
+          onCancel={this.onCloseModal}
+          onConfirm={this.onCloseModal}
+          title="提示框"
+          cancelText="取消"
+          confirmText="确认"
+          content="确定预约吗？"
+        />
       </View>
     );
   }
