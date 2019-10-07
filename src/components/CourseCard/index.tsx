@@ -1,9 +1,10 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
+import { Course } from '../../model';
 import './style.scss';
 
 type Props = {
-  data: any;
+  data: Course;
 };
 
 interface CourseCard {
