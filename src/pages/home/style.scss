@@ -5,11 +5,12 @@
 }
 
 .content {
-  margin: 16rpx;
+  display: flex;
+  flex-direction: column;
+  margin: $space;
 
   text {
-    display: block;
-    margin: 16rpx;
+    margin: $space;
 
     text-indent: 48rpx;
     line-height:  48rpx;

@@ -1,3 +1,4 @@
 import Course from './course';
+import CourseDetail from './coursedetail';
 
-export { Course };
+export { Course, CourseDetail };

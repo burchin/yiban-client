@@ -27,7 +27,7 @@ class CourseCard extends Component {
     if (e.target.id == 'order') {
       return;
     }
-    Taro.navigateTo({ url: './detail' });
+    Taro.navigateTo({ url: './detail/index' });
   };
 
   onOrder = () => {
