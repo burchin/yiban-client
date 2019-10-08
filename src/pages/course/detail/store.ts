@@ -15,7 +15,7 @@ class Store {
             person: 10,
             money: 100,
             status: 1,
-            detail: '<div>test</div><br/><h2>haha</h2>'
+            detail: '<div>test</div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><h2>haha</h2><br/><br/><br/><br/><br/><br/><br/><br/><a href="www.baidu.com">baidu</a><h1>ttt</h1>'
         };
     };
 }

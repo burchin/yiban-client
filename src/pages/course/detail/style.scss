@@ -1,4 +1,13 @@
 .box {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  .body {
+    height: 300rpx;
+  }
 }

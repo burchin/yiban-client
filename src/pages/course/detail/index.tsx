@@ -1,6 +1,7 @@
 import { ComponentType } from 'react';
 import Taro, { Component, Config } from '@tarojs/taro';
-import { View, Text, RichText } from '@tarojs/components';
+import { View, ScrollView, Text, RichText } from '@tarojs/components';
+import { AtButton } from 'taro-ui';
 import { observer } from '@tarojs/mobx';
 import Store from './store';
 
@@ -21,8 +22,13 @@ class CourseDetail extends Component {
     const { title, detail } = this.store.course;
     return (
       <View className="box">
-        <Text>{title}</Text>
-        <RichText nodes={detail} />
+        <View>
+          <AtButton type="primary">Test</AtButton>
+        </View>
+        <ScrollView className="body" scrollY={true}>
+          <Text>{title}</Text>
+          <RichText nodes={detail} />
+        </ScrollView>
       </View>
     );
   }
