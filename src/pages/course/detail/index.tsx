@@ -3,6 +3,7 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { View, ScrollView, Text, RichText } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
 import { observer } from '@tarojs/mobx';
+import { Px } from '../../../utils';
 import Store from './store';
 
 import './style.scss';
@@ -14,19 +15,27 @@ class CourseDetail extends Component {
     navigationBarTitleText: 'detail'
   };
 
-  componentDidMount() {
-    this.store.getDetail(1);
+  componentDidShow() {
+    Taro.getSystemInfo().then(info => {
+      this.store.setScrollViewHeight(info.windowHeight - Px.toRpx(120));
+    });
   }
 
   render() {
     const { title, detail } = this.store.course;
     return (
       <View className="box">
-        <View>
+        <View className="button">
           <AtButton type="primary">Test</AtButton>
         </View>
-        <ScrollView className="body" scrollY={true}>
+        <ScrollView
+          scrollY={true}
+          style={{ height: this.store.scrollViewHeight + 'px' }}
+        >
+          <View className="">
           <Text>{title}</Text>
+          </View>
+          
           <RichText nodes={detail} />
         </ScrollView>
       </View>

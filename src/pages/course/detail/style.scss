@@ -1,13 +1,23 @@
+page {
+  height: 100%;
+}
+
 .box {
   display: flex;
   flex-direction: column-reverse;
-  
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  height: 100%;
 
-  .body {
-    height: 300rpx;
+  .button {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: $space-small;
+    background-color: #eee;
+  }
+
+  .scroll {
+    
   }
 }
