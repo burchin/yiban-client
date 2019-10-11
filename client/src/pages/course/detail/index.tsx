@@ -15,6 +15,15 @@ class CourseDetail extends Component {
     navigationBarTitleText: 'detail'
   };
 
+  componentDidMount() {
+    Taro.cloud.callFunction({
+      name: 'getOpenid',
+      complete: res => {
+        console.log(res.result);
+      }
+    });
+  }
+
   componentDidShow() {
     Taro.getSystemInfo().then(info => {
       this.store.setScrollViewHeight(info.windowHeight - Px.toRpx(120));
@@ -33,9 +42,9 @@ class CourseDetail extends Component {
           style={{ height: this.store.scrollViewHeight + 'px' }}
         >
           <View className="">
-          <Text>{title}</Text>
+            <Text>{title}</Text>
           </View>
-          
+
           <RichText nodes={detail} />
         </ScrollView>
       </View>
