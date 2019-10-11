@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro';
 import UserStore from './user';
 
 class Root {
@@ -6,6 +7,11 @@ class Root {
 
   constructor() {
     if (!Root.rootStore) {
+      Taro.cloud.init({
+        env: 'yiban-client',
+        traceUser: true
+      });
+
       let self = this;
       this.userStore = new UserStore();
       Root.rootStore = self;

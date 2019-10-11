@@ -56,13 +56,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {
-    Taro.cloud.init({
-      env: 'yiban-client',
-      traceUser: true
-    });
-  }
-
   render () {
     return (
       <Provider store={store}>
