@@ -3,7 +3,7 @@ import { observable, action } from 'mobx';
 
 class Store {
   @observable banner: string = '';
-  @observable content: Array<string> = [];
+  @observable content: string[] = [];
 
   @action
   getIntro = () => {
@@ -17,7 +17,6 @@ class Store {
         }
       }
     });
-    
   };
 }
 

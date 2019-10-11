@@ -1,13 +1,10 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import counterStore from './store/counter'
+import RootStore from './store'
 import { Provider } from '@tarojs/mobx'
 import Home from './pages/home'
-
 import './app.scss'
 
-const store = {
-  counterStore
-}
+const store = new RootStore();
 
 class App extends Component {
 

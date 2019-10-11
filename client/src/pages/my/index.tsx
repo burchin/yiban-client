@@ -6,11 +6,9 @@ import { observer, inject } from '@tarojs/mobx';
 import './style.scss';
 
 type PageStateProps = {
-  counterStore: {
-    counter: number;
-    increment: Function;
-    decrement: Function;
-    incrementAsync: Function;
+  userStore: {
+    openId: string;
+    unionId: string;
   };
 };
 
@@ -18,7 +16,7 @@ interface My {
   props: PageStateProps;
 }
 
-@inject('counterStore')
+@inject('userStore')
 @observer
 class My extends Component {
   /**
@@ -32,7 +30,9 @@ class My extends Component {
     navigationBarTitleText: '首页'
   };
 
-  componentWillMount() {}
+  componentWillMount() {
+    console.log(this.props.userStore.openId);
+  }
 
   render() {
     return (

@@ -4,20 +4,6 @@ import { View, Text } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
 
-type PageStateProps = {
-  counterStore: {
-    counter: number,
-    increment: Function,
-    decrement: Function,
-    incrementAsync: Function
-  }
-}
-
-interface Mall {
-  props: PageStateProps;
-}
-
-@inject('counterStore')
 @observer
 class Mall extends Component {
 
