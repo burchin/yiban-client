@@ -8,7 +8,6 @@ class Store {
   @action
   getIntro = () => {
     const db = Taro.cloud.database();
-
     db.collection('introduction').get({
       success: res => {
         if (res.data.length > 0) {

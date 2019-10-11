@@ -1,17 +1,18 @@
-import { ComponentType } from 'react'
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
-import { observer, inject } from '@tarojs/mobx'
+import { ComponentType } from 'react';
+import Taro, { Component, Config } from '@tarojs/taro';
+import { View, Text, OpenData } from '@tarojs/components';
+import { observer, inject } from '@tarojs/mobx';
 
+import './style.scss';
 
 type PageStateProps = {
   counterStore: {
-    counter: number,
-    increment: Function,
-    decrement: Function,
-    incrementAsync: Function
-  }
-}
+    counter: number;
+    increment: Function;
+    decrement: Function;
+    incrementAsync: Function;
+  };
+};
 
 interface My {
   props: PageStateProps;
@@ -20,7 +21,6 @@ interface My {
 @inject('counterStore')
 @observer
 class My extends Component {
-
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -30,17 +30,24 @@ class My extends Component {
    */
   config: Config = {
     navigationBarTitleText: '首页'
-  }
+  };
 
-  componentWillMount () { }
+  componentWillMount() {}
 
-  render () {
+  render() {
     return (
-      <View className='index'>
+      <View className="box">
+        <View className="userinfo">
+          <View className="avatar">
+            <OpenData type="userAvatarUrl" />
+          </View>
+          <OpenData type="userNickName" />
+        </View>
+
         <Text>My</Text>
       </View>
-    )
+    );
   }
 }
 
-export default My  as ComponentType
+export default My as ComponentType;

@@ -16,12 +16,12 @@ class CourseDetail extends Component {
   };
 
   componentDidMount() {
-    Taro.cloud.callFunction({
-      name: 'getOpenid',
-      complete: res => {
-        console.log(res.result);
-      }
-    });
+    // Taro.cloud.callFunction({
+    //   name: 'getOpenid',
+    //   complete: res => {
+    //     console.log(res.result);
+    //   }
+    // });
   }
 
   componentDidShow() {
