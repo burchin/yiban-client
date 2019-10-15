@@ -14,7 +14,9 @@ class App extends Component {
       'pages/course/index',
       'pages/course/detail/index',
       'pages/mall/index',
-      'pages/my/index'
+      'pages/my/index',
+      'pages/admin/index',
+      'pages/admin/course/add'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -30,27 +32,31 @@ class App extends Component {
       list: [
         {
           pagePath: 'pages/home/index',
-          text: 'AAA',
+          text: '简介',
           iconPath: './assets/images/tab/home.png',
           selectedIconPath: './assets/images/tab/home_selected.png'
         },
         {
           pagePath: 'pages/course/index',
-          text: 'BBB',
+          text: '约课',
           iconPath: './assets/images/tab/course.png',
           selectedIconPath: './assets/images/tab/course_selected.png'
         },
         {
           pagePath: 'pages/mall/index',
-          text: 'CCC',
+          text: '商城',
           iconPath: './assets/images/tab/mall.png',
           selectedIconPath: './assets/images/tab/mall_selected.png'
         },
         {
           pagePath: 'pages/my/index',
-          text: 'DDD',
+          text: '我的',
           iconPath: './assets/images/tab/my.png',
           selectedIconPath: './assets/images/tab/my_selected.png'
+        },
+        {
+          pagePath: 'pages/admin/index',
+          text: 'test'
         }
       ]
     }

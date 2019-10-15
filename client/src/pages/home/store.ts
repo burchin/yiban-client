@@ -1,5 +1,5 @@
-import Taro from '@tarojs/taro';
 import { observable, action } from 'mobx';
+import { DBHelper } from '../../utils';
 
 class Store {
   @observable banner: string = '';
@@ -7,8 +7,7 @@ class Store {
 
   @action
   getIntro = () => {
-    const db = Taro.cloud.database();
-    db.collection('introduction').get({
+    DBHelper.db.collection('introduction').get({
       success: res => {
         if (res.data.length > 0) {
           const intro = res.data[0];

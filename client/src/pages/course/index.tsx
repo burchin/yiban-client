@@ -9,7 +9,7 @@ import Store from './store';
 class Course extends Component {
   store = new Store(); 
   config: Config = {
-    navigationBarTitleText: 'BBB'
+    navigationBarTitleText: '约课'
   };
 
   render() {

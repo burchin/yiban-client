@@ -1,16 +1,15 @@
 import { ComponentType } from 'react';
-import Taro, { Component, Config } from '@tarojs/taro';
 import { observer } from '@tarojs/mobx';
+import Taro, { Component, Config } from '@tarojs/taro';
 import { Image, View, Text } from '@tarojs/components';
 import Store from './store';
-
 import './style.scss';
 
 @observer
 class Home extends Component {
   store = new Store();
   config: Config = {
-    navigationBarTitleText: '简介'
+    navigationBarTitleText: '关于艺伴'
   };
 
   componentWillMount() {

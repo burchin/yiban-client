@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 class User {
   @observable openId: string = '';
@@ -12,6 +12,11 @@ class User {
       }
     });
   }
+
+  @action
+  getUserInfo = () => {
+    
+  };
 }
 
 export default User;

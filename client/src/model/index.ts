@@ -1,5 +1,4 @@
-import Course from './course';
-import CourseDetail from './coursedetail';
+import { Course, CourseDetail } from './course';
 import { Sex, User } from './user';
 
 export { 
