@@ -2,6 +2,7 @@ import { ComponentType } from 'react';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Picker } from '@tarojs/components';
 import { AtForm, AtInput } from 'taro-ui';
+import { TimePicker } from '../../../components';
 import { observer } from '@tarojs/mobx';
 import Store from './store';
 
@@ -16,12 +17,19 @@ class AddCourse extends Component {
 
   handleChange = value => {};
 
-  onTimeChange = e => {
-      this.store.setValue('beginTime', e.detail.value);
+  onTimeChange = (name: string, value: string) => {
+    switch (name) {
+      case 'beginTime':
+        this.store.setBeginTime(value);
+        break;
+      case 'endTime':
+        this.store.setEndTime(value);
+        break;
+    }
   };
 
   render() {
-    const { title, beignTime } = this.store;
+    const { title, beignTime, endTime } = this.store;
     console.log(beignTime);
     return (
       <AtForm>
@@ -33,13 +41,18 @@ class AddCourse extends Component {
           value={title}
           onChange={this.handleChange.bind(this)}
         />
-        <Picker
-          mode="time"
+        <TimePicker
+          name="beginTime"
+          title="开始时间"
           value={beignTime}
           onChange={this.onTimeChange.bind(this)}
-        >
-          <View className="picker">当前选择：{beignTime}</View>
-        </Picker>
+        />
+        <TimePicker
+          name="endTime"
+          title="结束时间"
+          value={endTime}
+          onChange={this.onTimeChange.bind(this)}
+        />
       </AtForm>
     );
   }

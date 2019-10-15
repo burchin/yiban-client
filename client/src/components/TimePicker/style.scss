@@ -1,0 +1,13 @@
+.box {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 32px;
+
+    color: #333;
+    font-size: 32px;
+    // border-bottom: 1px solid #d6e4ef;
+
+    .value {
+        color: #666;
+    }
+}

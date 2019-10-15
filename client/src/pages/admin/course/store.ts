@@ -3,11 +3,17 @@ import { observable, action } from 'mobx';
 class Store {
   @observable title: string = '';
   @observable beignTime: string = '';
+  @observable endTime: string = '';
 
   @action
-  setValue = (field: string, value: string) => {
+  setBeginTime = (value: string) => {
     this.beignTime = value;
   };
+
+  @action
+  setEndTime = (value: string) => {
+    this.endTime = value;
+  }
 }
 
 export default Store;

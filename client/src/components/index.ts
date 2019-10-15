@@ -1,3 +1,4 @@
 import CourseCard from './CourseCard';
+import TimePicker from './TimePicker';
 
-export { CourseCard };
+export { CourseCard, TimePicker };
