@@ -8,7 +8,7 @@ type Course = {
     // 结束时间（没有日期）
     endTime: string;
     // 开发预约时间（没有日期）
-    openTime: string;
+    openTime: number;
     // 地址
     address: string;
     // 金币价格

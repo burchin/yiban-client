@@ -21,7 +21,7 @@ class TimePicker extends Component {
   render() {
     return (
       <Picker mode="time" value={this.props.value} onChange={this.onChange}>
-        <View className="box">
+        <View className="formItem">
           <Text>{this.props.title}</Text>
           <Text className="value">{this.props.value == '' ? '请选择' : this.props.value}</Text>
         </View>
