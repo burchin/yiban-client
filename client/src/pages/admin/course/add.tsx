@@ -68,6 +68,7 @@ class AddCourse extends Component {
 
     return (
       <AtForm
+        className="add"
         onSubmit={this.onSubmit.bind(this)}
         onReset={this.onReset.bind(this)}
       >
@@ -140,12 +141,14 @@ class AddCourse extends Component {
             placeholder="课程的描述是..."
           />
         </View>
-        <AtButton type="primary" formType="submit">
-          提交
-        </AtButton>
-        <AtButton type="secondary" formType="reset">
-          重置
-        </AtButton>
+        <View className="btnContainer">
+          <AtButton type="primary" formType="submit">
+            提交
+          </AtButton>
+          <AtButton type="secondary" formType="reset">
+            重置
+          </AtButton>
+        </View>
       </AtForm>
     );
   }

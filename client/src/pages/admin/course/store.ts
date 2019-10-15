@@ -53,7 +53,7 @@ class Store {
         useCoupon,
         description
       },
-      success: res => {
+      success: () => {
         Taro.showToast({
           title: '成功',
           icon: 'success',

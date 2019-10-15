@@ -1,12 +1,22 @@
 @import '../../../assets/styles/common.scss';
 
-.description {
-  padding: 24px 32px;
+.add {
+  .description {
+    padding: 24px 32px;
 
-  color: #333;
-  font-size: 32px;
+    color: #333;
+    font-size: 32px;
 
-  .area {
+    .area {
       margin-top: 24px;
+    }
+  }
+
+  .btnContainer {
+    padding: 24px 32px;
+
+    :first-child {
+      margin-bottom: 16px;
+    }
   }
 }
