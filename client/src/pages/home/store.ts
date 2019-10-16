@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { DBHelper } from '../../utils';
+import { DBHelper } from '@util';
 
 class Store {
   @observable banner: string = '';

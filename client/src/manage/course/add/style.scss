@@ -1,4 +1,4 @@
-@import '../../assets/styles/common.scss';
+@import '../../../assets/styles/common.scss';
 
 .add {
   .description {
@@ -21,3 +21,8 @@
   }
 }
 
+.arrange {
+  .list {
+    padding: 24px 32px;
+  }
+}

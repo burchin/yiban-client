@@ -14,15 +14,16 @@ class App extends Component {
       'pages/course/detail/index',
       'pages/mall/index',
       'pages/my/index',
-      'pages/admin/index'
+      'pages/manage/index'
     ],
     subPackages: [
       {
         name: 'manage',
-        root: 'admin/',
+        root: 'manage/',
         pages: [
-          'course/add',
-          'course/arrange'
+          'course/add/index',
+          'course/list/index',
+          'course/arrange/index'
         ]
       }
     ],
@@ -63,7 +64,7 @@ class App extends Component {
           selectedIconPath: './assets/images/tab/my_selected.png'
         },
         {
-          pagePath: 'pages/admin/index',
+          pagePath: 'pages/manage/index',
           text: 'test'
         }
       ]

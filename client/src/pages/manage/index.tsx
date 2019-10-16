@@ -13,10 +13,10 @@ class Admin extends Component {
     let url: string = '';
     switch (type) {
       case 'add':
-        url = '../../admin/course/add';
+        url = '../../manage/course/add/index';
         break;
       case 'arrange':
-        url = '../../admin/course/arrange';
+        url = '../../manage/course/list/index';
         break;
     }
     Taro.navigateTo({ url });
