@@ -1,3 +1,4 @@
+const path = require('path');
 const config = {
   projectName: 'client',
   date: '2019-9-29',
@@ -9,6 +10,12 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
+  alias: {
+    '@model': path.resolve(__dirname, '../src/model'),
+    '@util': path.resolve(__dirname, '../src/utils'),
+    '@component': path.resolve(__dirname, '../src/components'),
+    '@store': path.resolve(__dirname, '../src/store')
+  },
   plugins: {
     babel: {
       sourceMap: true,

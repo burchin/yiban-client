@@ -1,26 +1,22 @@
-type Course = {
+class Course {
     // 课程ID
     id: number;
     // 标题
     title: string;
-    // 开始时间（没有日期）
-    beginTime: string;
-    // 结束时间（没有日期）
-    endTime: string;
-    // 开发预约时间（没有日期）
-    openTime: number;
+    // 上限人数
+    max: number = 10;
     // 地址
-    address: string;
+    address: string = '福州某某某路111号某某某11号楼1101室';
     // 金币价格
-    money: number;
+    money: number = 0;
     // 是否可用优惠券
-    useCoupon: number;
+    useCoupon: boolean = false;
     // 经验值
     experience: number;
-    // 是否逻辑删除
-    isDelete: number;
     // 详情
     description: string;
+    // 是否逻辑删除
+    isDelete: boolean = false;
 }
 
 type CourseDetail = {

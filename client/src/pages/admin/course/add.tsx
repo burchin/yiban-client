@@ -2,15 +2,7 @@ import { ComponentType } from 'react';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { Text, View } from '@tarojs/components';
-import {
-  AtForm,
-  AtInput,
-  AtInputNumber,
-  AtSwitch,
-  AtTextarea,
-  AtButton
-} from 'taro-ui';
-import { TimePicker } from '../../../components';
+import { AtForm, AtInput, AtSwitch, AtTextarea, AtButton } from 'taro-ui';
 import Store from './store';
 import './style.scss';
 
@@ -23,29 +15,23 @@ class AddCourse extends Component {
 
   handleChange = (name: string, value: any) => {
     switch (name) {
-      case 'title':
-        this.store.setValue(name, value);
+      case 'money':
+      case 'exp':
+      case 'max':
+        this.store.setValue(name, Number(value));
         break;
+      case 'title':
       case 'useCoupon':
-        this.store.setValue(name, value ? 1 : 0);
+        this.store.setValue(name, value);
         break;
       case 'description':
         this.store.setValue(name, value.detail.value);
         break;
-      case 'openTime':
-      case 'money':
-      case 'exp':
-        this.store.setValue(name, Number(value));
-        break;
+      
     }
   };
 
-  onTimeChange = (name: string, value: string) => {
-    this.store.setValue(name, value);
-  };
-
-  onSubmit = e => {
-    console.log(e);
+  onSubmit = () => {
     this.store.add();
   };
 
@@ -54,17 +40,7 @@ class AddCourse extends Component {
   };
 
   render() {
-    const {
-      title,
-      beginTime,
-      endTime,
-      openTime,
-      address,
-      money,
-      experience,
-      useCoupon,
-      description
-    } = this.store;
+    const { course } = this.store;
 
     return (
       <AtForm
@@ -77,37 +53,22 @@ class AddCourse extends Component {
           title="名称"
           type="text"
           placeholder="标题名称"
-          value={title}
+          value={course.title}
           onChange={this.handleChange.bind(this, 'title')}
         />
-        <TimePicker
-          name="beginTime"
-          title="开始时间"
-          value={beginTime}
-          onChange={this.onTimeChange.bind(this)}
+        <AtInput
+          name="max"
+          title="上限人数"
+          type="number"
+          placeholder="请输入数字"
+          value={course.max}
+          onChange={this.handleChange.bind(this, 'max')}
         />
-        <TimePicker
-          name="endTime"
-          title="结束时间"
-          value={endTime}
-          onChange={this.onTimeChange.bind(this)}
-        />
-        <View className="formItem">
-          <Text>开放预约</Text>
-          <AtInputNumber
-            type="number"
-            min={1}
-            max={48}
-            step={1}
-            value={openTime}
-            onChange={this.handleChange.bind(this, 'openTime')}
-          />
-        </View>
         <AtInput
           name="address"
           title="地址"
           type="text"
-          value={address}
+          value={course.address}
           onChange={this.handleChange.bind(this, 'address')}
         />
         <AtInput
@@ -115,7 +76,7 @@ class AddCourse extends Component {
           title="价格"
           type="number"
           placeholder="请输入数字"
-          value={money}
+          value={course.money}
           onChange={this.handleChange.bind(this, 'money')}
         />
         <AtInput
@@ -123,19 +84,19 @@ class AddCourse extends Component {
           title="经验值"
           type="number"
           placeholder="请输入数字"
-          value={experience}
+          value={course.experience}
           onChange={this.handleChange.bind(this, 'exp')}
         />
         <AtSwitch
           title="优惠券是否可用"
-          checked={useCoupon == 1 ? true : false}
+          checked={course.useCoupon}
           onChange={this.handleChange.bind(this, 'useCoupon')}
         />
         <View className="description">
           <Text>描述</Text>
           <AtTextarea
             className="area"
-            value={description}
+            value={course.description}
             onChange={this.handleChange.bind(this, 'description')}
             maxLength={200}
             placeholder="课程的描述是..."
