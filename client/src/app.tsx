@@ -1,13 +1,12 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import RootStore from './store'
-import { Provider } from '@tarojs/mobx'
-import Home from './pages/home'
-import './app.scss'
+import Taro, { Component, Config } from '@tarojs/taro';
+import RootStore from './store';
+import { Provider } from '@tarojs/mobx';
+import Home from './pages/home';
+import './app.scss';
 
 const store = new RootStore();
 
 class App extends Component {
-
   config: Config = {
     pages: [
       'pages/home/index',
@@ -15,8 +14,17 @@ class App extends Component {
       'pages/course/detail/index',
       'pages/mall/index',
       'pages/my/index',
-      'pages/admin/index',
-      'pages/admin/course/add'
+      'pages/admin/index'
+    ],
+    subPackages: [
+      {
+        name: 'manage',
+        root: 'admin/',
+        pages: [
+          'course/add',
+          'course/arrange'
+        ]
+      }
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -60,15 +68,15 @@ class App extends Component {
         }
       ]
     }
-  }
+  };
 
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <Home />
       </Provider>
-    )
+    );
   }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App />, document.getElementById('app'));
