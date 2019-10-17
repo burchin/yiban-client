@@ -11,8 +11,6 @@ class ArrangeCourse extends Component {
     navigationBarTitleText: 'arrange'
   };
 
-  marks = [{ value: '2019/10/18' }, { value: '2019/10/21' }];
-
   onDayClick = e => {
     console.log(e);
   };
@@ -29,7 +27,7 @@ class ArrangeCourse extends Component {
     return (
       <View className="arrange">
         <AtCalendar
-          marks={this.marks}
+          // marks={this.marks}
           onDayClick={this.onDayClick}
           onMonthChange={this.onMonthChange}
         />

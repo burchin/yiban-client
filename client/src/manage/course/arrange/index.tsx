@@ -7,8 +7,6 @@ import { TimePicker } from '@component';
 import Store from './store';
 import './style.scss';
 
-const selector = ['美国', '中国', '巴西', '日本'];
-
 @observer
 class AddSchedule extends Component {
   store = new Store();
@@ -18,9 +16,14 @@ class AddSchedule extends Component {
 
   componentWillMount() {
     this.store.setValue('date', this.$router.params.date);
+    this.store.getCourseList();
   }
 
-  handleChange = (name: string, value: any) => {};
+  handleChange = (name: string, value: any) => {
+    if (name == 'course') {
+      this.store.setSelectedCourse(Number(value.detail.value));
+    }
+  };
 
   onTimeChange = (name: string, value: string) => {
     this.store.setValue(name, value);
@@ -35,7 +38,7 @@ class AddSchedule extends Component {
   };
 
   render() {
-    const { schedule } = this.store;
+    const { courses, selectedCourse, schedule } = this.store;
     return (
       <AtForm
         className="schedule"
@@ -52,13 +55,14 @@ class AddSchedule extends Component {
         />
         <Picker
           mode="selector"
-          range={selector}
-          value={0}
+          range={courses}
+          rangeKey="title"
+          value={selectedCourse}
           onChange={this.handleChange.bind(this, 'course')}
         >
           <View className="formItem">
             <Text>课程</Text>
-            <Text className="value">请选择</Text>
+            <Text className="value">{courses[selectedCourse].title}</Text>
           </View>
         </Picker>
         <TimePicker

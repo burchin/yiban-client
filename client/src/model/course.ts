@@ -27,9 +27,9 @@ class Schedule {
     // 日期
     date: string;
     // 开始时间
-    beginTime: string;
+    beginTime: string = '';
     // 结束时间
-    endTime: string;
+    endTime: string = '';
     // 开发预约时间
     openTime: number = 24;
     // 价格
