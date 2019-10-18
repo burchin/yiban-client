@@ -1,7 +1,6 @@
-import Taro from '@tarojs/taro';
 import { observable, action } from 'mobx';
 import { Schedule } from '@model';
-import { DBHelper } from '@util';
+import { DBHelper, UIHelper } from '@util';
 
 type Course = {
   _id: string;
@@ -58,17 +57,25 @@ class Store {
 
   @action
   add = () => {
-    DBHelper.db.collection('schedule').add({
-      data: this.schedule,
-      success: () => {
-        Taro.showToast({
-          title: '成功',
-          icon: 'success',
-          duration: 2000
-        })
-      }
-    });
+    const course = this.courses[this.selectedCourse];
+    
+    this.schedule = {
+      ...this.schedule,
+      money: course.money,
+      experience: course.experience
+    };
 
+    DBHelper.db
+      .collection('schedule')
+      .add({
+        data: this.schedule
+      })
+      .then(() => {
+        UIHelper.showToast('排课成功');
+      })
+      .catch(() => {
+        UIHelper.showToast('排课失败', false);
+      });
   };
 }
 

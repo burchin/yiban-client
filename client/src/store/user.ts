@@ -6,10 +6,11 @@ class User {
 
   constructor() {
     Taro.cloud.callFunction({
-      name: 'getOpenid',
-      complete: res => {
-        this.openId = res['result'].openId;
-      }
+      name: 'getOpenid'
+    }).then(res => {
+      this.openId = res['result'].openId;
+    }).catch(err => {
+      console.log(err);
     });
   }
 

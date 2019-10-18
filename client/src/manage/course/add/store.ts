@@ -1,7 +1,6 @@
-import Taro from '@tarojs/taro';
 import { observable, action } from 'mobx';
 import { Course } from '@model';
-import { DBHelper } from '@util';
+import { DBHelper, UIHelper } from '@util';
 
 class Store {
   // 课程
@@ -15,14 +14,11 @@ class Store {
   @action
   add = () => {
     DBHelper.db.collection('course').add({
-      data: this.course,
-      success: () => {
-        Taro.showToast({
-          title: '成功',
-          icon: 'success',
-          duration: 2000
-        })
-      }
+      data: this.course
+    }).then(() => {
+      UIHelper.showToast('创建成功');
+    }).catch(() => {
+      UIHelper.showToast('创建失败', false);
     });
   };
 }

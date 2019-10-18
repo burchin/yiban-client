@@ -3,7 +3,7 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { View, ScrollView, Text, RichText } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
 import { observer } from '@tarojs/mobx';
-import { Px } from '../../../utils';
+import { UIHelper } from '@util';
 import Store from './store';
 
 import './style.scss';
@@ -26,7 +26,7 @@ class CourseDetail extends Component {
 
   componentDidShow() {
     Taro.getSystemInfo().then(info => {
-      this.store.setScrollViewHeight(info.windowHeight - Px.toRpx(120));
+      this.store.setScrollViewHeight(info.windowHeight - UIHelper.toRpx(120));
     });
   }
 
