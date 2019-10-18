@@ -2,7 +2,7 @@ import { ComponentType } from 'react';
 import { observer } from '@tarojs/mobx';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Text, Picker } from '@tarojs/components';
-import { AtInput, AtForm, AtInputNumber } from 'taro-ui';
+import { AtInput, AtForm, AtInputNumber, AtButton } from 'taro-ui';
 import { TimePicker } from '@component';
 import Store from './store';
 import './style.scss';
@@ -22,6 +22,8 @@ class AddSchedule extends Component {
   handleChange = (name: string, value: any) => {
     if (name == 'course') {
       this.store.setSelectedCourse(Number(value.detail.value));
+    } else {
+      this.store.setValue('openTime', Number(value));
     }
   };
 
@@ -29,16 +31,24 @@ class AddSchedule extends Component {
     this.store.setValue(name, value);
   };
 
-  onSubmit = e => {
-    console.log(e);
+  onSubmit = () => {
+    this.store.add();
   };
 
-  onReset = e => {
-    console.log(e);
+  onReset = () => {
+    Taro.navigateBack();
   };
 
   render() {
-    const { courses, selectedCourse, schedule } = this.store;
+    const {
+      courses,
+      selectedCourse,
+      schedule,
+      beginTime,
+      endTime,
+      openTime
+    } = this.store;
+
     return (
       <AtForm
         className="schedule"
@@ -68,13 +78,13 @@ class AddSchedule extends Component {
         <TimePicker
           name="beginTime"
           title="开始时间"
-          value={schedule.beginTime}
+          value={beginTime}
           onChange={this.onTimeChange.bind(this)}
         />
         <TimePicker
           name="endTime"
           title="结束时间"
-          value={schedule.endTime}
+          value={endTime}
           onChange={this.onTimeChange.bind(this)}
         />
         <View className="formItem">
@@ -84,9 +94,17 @@ class AddSchedule extends Component {
             min={1}
             max={48}
             step={1}
-            value={schedule.openTime}
+            value={openTime}
             onChange={this.handleChange.bind(this, 'openTime')}
           />
+        </View>
+        <View className="btnContainer">
+          <AtButton type="primary" formType="submit">
+            提交
+          </AtButton>
+          <AtButton type="secondary" formType="reset">
+            取消
+          </AtButton>
         </View>
       </AtForm>
     );

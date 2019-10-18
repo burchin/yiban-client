@@ -1,1 +1,11 @@
 @import '../../../assets/styles/common.scss';
+
+.schedule {
+  .btnContainer {
+    padding: 24px 32px;
+
+    :first-child {
+      margin-bottom: 16px;
+    }
+  }
+}

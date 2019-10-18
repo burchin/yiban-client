@@ -35,8 +35,8 @@ class AddCourse extends Component {
     this.store.add();
   };
 
-  onReset = e => {
-    console.log(e);
+  onReset = () => {
+    Taro.navigateBack();
   };
 
   render() {
@@ -107,7 +107,7 @@ class AddCourse extends Component {
             提交
           </AtButton>
           <AtButton type="secondary" formType="reset">
-            重置
+            取消
           </AtButton>
         </View>
       </AtForm>
