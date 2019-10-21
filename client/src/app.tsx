@@ -65,7 +65,7 @@ class App extends Component {
         },
         {
           pagePath: 'pages/manage/index',
-          text: 'test'
+          text: '后台'
         }
       ]
     }

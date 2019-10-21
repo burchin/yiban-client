@@ -14,10 +14,10 @@ exports.main = async (event, context) => {
 
   if (schedule.data != null) {
     const s = schedule.data;
-    const course = await db.collection('course').doc(schedule.courseId).get();
+    const course = await db.collection('course').doc(s.courseId).get();
 
     if (course.data != null) {
-      let detail = {
+      detail = {
         ...course.data,
         scheduleId: s._id,
         beginTime: `${s.date} ${s.beginTime}`,

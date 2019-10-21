@@ -12,10 +12,32 @@
     justify-content: center;
 
     padding: $space-small;
-    background-color: #eee;
   }
 
   .scroll {
-    
+    background-color: #f3f3f3;
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      margin: 12px 32px;
+      padding: 12px;
+      background-color: white;
+
+      .title {
+        font-size: $title-size-primary;
+      }
+
+      .item {
+        margin: 12px 0;
+        font-size: $title-size-extra;
+      }
+    }
+
+    .content {
+      margin: 12px 32px;
+      padding: 12px;
+      background-color: white;
+    }
   }
 }

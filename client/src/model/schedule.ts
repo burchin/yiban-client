@@ -20,6 +20,7 @@ class Schedule {
     isDelete: boolean = false;
 }
 
+// 排课列表
 class ScheduleListItem {
     // schedule id
     id: string;

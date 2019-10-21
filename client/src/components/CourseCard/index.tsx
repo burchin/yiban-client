@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { observer } from '@tarojs/mobx';
 import { Image, View, Text } from '@tarojs/components';
 import { AtButton, AtModal } from 'taro-ui';
-import { Course } from '../../model';
+import { ScheduleListItem } from '../../model';
 import Store from './store';
 import './style.scss';
 
@@ -11,7 +11,7 @@ import picAddress from './images/address.png';
 import picMoney from './images/money.png';
 
 type Props = {
-  data: Course;
+  data: ScheduleListItem;
   style?: string;
 };
 
@@ -27,7 +27,7 @@ class CourseCard extends Component {
     if (e.target.id == 'order') {
       return;
     }
-    Taro.navigateTo({ url: './detail/index' });
+    Taro.navigateTo({ url: `./detail/index?id=${this.props.data.id}` });
   };
 
   onOrder = () => {

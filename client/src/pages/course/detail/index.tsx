@@ -15,13 +15,8 @@ class CourseDetail extends Component {
     navigationBarTitleText: 'detail'
   };
 
-  componentDidMount() {
-    // Taro.cloud.callFunction({
-    //   name: 'getOpenid',
-    //   complete: res => {
-    //     console.log(res.result);
-    //   }
-    // });
+  componentWillMount() {
+    this.store.getDetail(this.$router.params.id);
   }
 
   componentDidShow() {
@@ -31,21 +26,29 @@ class CourseDetail extends Component {
   }
 
   render() {
-    const { title, detail } = this.store.course;
+    const { course } = this.store;
     return (
       <View className="box">
         <View className="button">
           <AtButton type="primary">Test</AtButton>
         </View>
         <ScrollView
+          className="scroll"
           scrollY={true}
           style={{ height: this.store.scrollViewHeight + 'px' }}
         >
-          <View className="">
-            <Text>{title}</Text>
+          <View className="header">
+            <Text className="title">{course.title}</Text>
+            <Text className="item">
+              时间：{course.beginTime} - {course.endTime}
+            </Text>
+            <Text className="item">地址：{course.address}</Text>
+            <Text className="item">上限人数：{course.max}</Text>
           </View>
 
-          <RichText nodes={detail} />
+          <View className="content">
+            <RichText nodes={course.description} />
+          </View>
         </ScrollView>
       </View>
     );
