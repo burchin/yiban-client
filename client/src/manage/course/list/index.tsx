@@ -20,7 +20,7 @@ class ArrangeCourse extends Component {
   };
 
   onClick = () => {
-    Taro.navigateTo({ url: '../arrange/index?date=888' });
+    Taro.navigateTo({ url: '../arrange/index?date=2019-10-20' });
   };
 
   render() {

@@ -12,6 +12,10 @@ class Course extends Component {
     navigationBarTitleText: '约课'
   };
 
+  componentDidMount() {
+    this.store.getList();
+  }
+
   render() {
     return (
       <View>

@@ -10,23 +10,26 @@ exports.main = async (event, context) => {
   const id = event.id;
   const db = cloud.database()
   const schedule = await db.collection('schedule').doc(id).get();
+  let detail = null;
 
-  if (schedule != null) {
+  if (schedule.data != null) {
+    const s = schedule.data;
     const course = await db.collection('course').doc(schedule.courseId).get();
 
-    let detail = {
-      ...course,
-      scheduleId: schedule.id,
-      beginTime: `${schedule.date} ${schedule.beginTime}`,
-      endTime: `${schedule.date} ${schedule.endTime}`,
-      openTime: schedule.openTime,
-      money: schedule.money,
-      experience: schedule.experience
-    };
-
-    delete detail.isDelete;
-    return detail;
+    if (course.data != null) {
+      let detail = {
+        ...course.data,
+        scheduleId: s._id,
+        beginTime: `${s.date} ${s.beginTime}`,
+        endTime: `${s.date} ${s.endTime}`,
+        openTime: s.openTime,
+        money: s.money,
+        experience: s.experience
+      };
+  
+      delete detail.isDelete;
+    }
   }
   
-  return null;
+  return detail;
 };

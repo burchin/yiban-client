@@ -1,27 +1,21 @@
-import { observable } from 'mobx';
-import { Course } from '../../model';
+import Taro from '@tarojs/taro';
+import { observable, action } from 'mobx';
+import { ScheduleListItem } from '../../model';
 
 class Store {
-  @observable list: Array<Course> = [
-    {
-      id: 1,
-      title: 'aaa',
-      beginTime: '09:00',
-      endTime: '10:00',
-      address: 'bbb',
-      money: 100,
-      status: 1
-    },
-    {
-      id: 2,
-      title: '测试',
-      beginTime: '09:00',
-      endTime: '10:00',
-      address: '地址',
-      money: 100,
-      status: 1
-    }
-  ];
+
+  @observable list: Array<ScheduleListItem> = [];
+
+  @action
+  getList = () => {
+    Taro.cloud.callFunction({
+      name: 'getCourseList'
+    }).then(res => {
+      this.list = res['result'];
+    }).catch(err => {
+      console.log(err);
+    });
+  }
 }
 
 export default Store;

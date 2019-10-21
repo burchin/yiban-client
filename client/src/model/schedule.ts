@@ -20,4 +20,14 @@ class Schedule {
     isDelete: boolean = false;
 }
 
-export { Schedule };
+class ScheduleListItem {
+    // schedule id
+    id: string;
+    title: string;
+    address: string;
+    beginTime: string = '';
+    endTime: string = '';
+    money: number = 0;
+}
+
+export { Schedule, ScheduleListItem };

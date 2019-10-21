@@ -16,7 +16,7 @@ class AddCourse extends Component {
   handleChange = (name: string, value: any) => {
     switch (name) {
       case 'money':
-      case 'exp':
+      case 'experience':
       case 'max':
         this.store.setValue(name, Number(value));
         break;
@@ -80,12 +80,12 @@ class AddCourse extends Component {
           onChange={this.handleChange.bind(this, 'money')}
         />
         <AtInput
-          name="exp"
+          name="experience"
           title="经验值"
           type="number"
           placeholder="请输入数字"
           value={course.experience}
-          onChange={this.handleChange.bind(this, 'exp')}
+          onChange={this.handleChange.bind(this, 'experience')}
         />
         <AtSwitch
           title="优惠券是否可用"
