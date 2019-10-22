@@ -1,50 +1,61 @@
 import { ComponentType } from 'react';
-import Taro, { Component, Config } from '@tarojs/taro';
-import { View, Text, OpenData } from '@tarojs/components';
+import { Component, Config } from '@tarojs/taro';
 import { observer, inject } from '@tarojs/mobx';
+import { View, Text, OpenData } from '@tarojs/components';
+import { AtButton, AtList, AtListItem } from 'taro-ui';
+
+import { User } from '@model';
 
 import './style.scss';
 
-type PageStateProps = {
+type IProps = {
   userStore: {
-    openId: string;
-    unionId: string;
+    info: User;
   };
 };
 
 interface My {
-  props: PageStateProps;
+  props: IProps;
 }
 
 @inject('userStore')
 @observer
 class My extends Component {
-  /**
-   * 指定config的类型声明为: Taro.Config
-   *
-   * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
-   * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
-   * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
-   */
   config: Config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '个人中心'
   };
 
-  componentWillMount() {
-    console.log(this.props.userStore.openId);
-  }
-
   render() {
+    const { info } = this.props.userStore;
+
     return (
       <View className="box">
-        <View className="userinfo">
+        <View className="info">
           <View className="avatar">
             <OpenData type="userAvatarUrl" />
           </View>
-          <OpenData type="userNickName" />
+          <View className="nickName">
+            <OpenData type="userNickName" className="name" />
+            {info.id == '' && (
+              <AtButton type="primary" size="small" circle={true}>
+                点击加入
+              </AtButton>
+            )}
+          </View>
         </View>
-
-        <Text>My</Text>
+        <View className="money">
+          <Text>金币 {info.money}</Text>
+          <Text>优惠券 {info.coupon}</Text>
+          <Text>积分 {info.experience}</Text>
+        </View>
+        <AtList>
+          <AtListItem
+            title="个人资料"
+            arrow="right"
+          />
+          <AtListItem title="我的课程" arrow="right" />
+          <AtListItem title="我的订单" arrow="right" />
+        </AtList>
       </View>
     );
   }

@@ -22,6 +22,11 @@ class Home extends Component {
       <View>
         <Image className="banner" mode="widthFix" src={banner} />
         <View className="content">
+          <Text>
+            进展：\r\n
+            2019-10-21 个人中心界面 \r\n
+            ===================================
+          </Text>
           {content.map(text => (
             <Text key={Math.random()}>{text}</Text>
           ))}

@@ -1,23 +1,23 @@
 import Taro from '@tarojs/taro';
-import { observable, action } from 'mobx';
+import { observable } from 'mobx';
+import { User } from '@model';
 
-class User {
-  @observable openId: string = '';
+class UserStore {
+  @observable info: User = new User();
 
   constructor() {
     Taro.cloud.callFunction({
-      name: 'getOpenid'
+      name: 'getUserInfo'
     }).then(res => {
-      this.openId = res['result'].openId;
+      if (res.result._id == undefined) {
+        this.info.openId = res.result.openId;
+      } else {
+        this.info = res.result;
+      }
     }).catch(err => {
       console.log(err);
     });
   }
-
-  @action
-  getUserInfo = () => {
-    
-  };
 }
 
-export default User;
+export default UserStore;
