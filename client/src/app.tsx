@@ -14,6 +14,7 @@ class App extends Component {
       'pages/course/detail/index',
       'pages/mall/index',
       'pages/my/index',
+      'pages/my/info/index',
       'pages/manage/index'
     ],
     subPackages: [

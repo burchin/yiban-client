@@ -1,5 +1,5 @@
 import { ComponentType } from 'react';
-import { Component, Config } from '@tarojs/taro';
+import Taro, { Component, Config } from '@tarojs/taro';
 import { observer, inject } from '@tarojs/mobx';
 import { View, Text, OpenData } from '@tarojs/components';
 import { AtButton, AtList, AtListItem } from 'taro-ui';
@@ -23,6 +23,14 @@ interface My {
 class My extends Component {
   config: Config = {
     navigationBarTitleText: '个人中心'
+  };
+
+  onClick = (type: string) => {
+    switch (type) {
+      case 'info':
+        Taro.navigateTo({ url: './info/index' });
+        break;
+    }
   };
 
   render() {
@@ -52,6 +60,7 @@ class My extends Component {
           <AtListItem
             title="个人资料"
             arrow="right"
+            onClick={this.onClick.bind(this, 'info')}
           />
           <AtListItem title="我的课程" arrow="right" />
           <AtListItem title="我的订单" arrow="right" />
