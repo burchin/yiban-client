@@ -7,19 +7,19 @@ class User {
   // openId
   openId: string = '';
   // 姓名
-  name: string;
+  name: string = '';
   // 性别
-  sex: number;
+  sex: number = 0;
   // 年龄
-  age: number;
+  age: number = 1;
   // 联系电话
-  tel: string;
+  tel: string = '';
   // 生日
-  birthday: string;
+  birthday: string = '2000-01-01';
   // 学校
-  school: string;
+  school: string = '';
   // 加入时间
-  joinTime: string;
+  joinTime: string = '';
   // 剩余金币
   money: number = 0;
   // 优惠券

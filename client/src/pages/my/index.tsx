@@ -3,9 +3,8 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { observer, inject } from '@tarojs/mobx';
 import { View, Text, OpenData } from '@tarojs/components';
 import { AtButton, AtList, AtListItem } from 'taro-ui';
-
 import { User } from '@model';
-
+import Store from './store';
 import './style.scss';
 
 type IProps = {
@@ -21,8 +20,13 @@ interface My {
 @inject('userStore')
 @observer
 class My extends Component {
+  store = new Store();
   config: Config = {
     navigationBarTitleText: '个人中心'
+  };
+
+  onJoin = () => {
+    this.store.join();
   };
 
   onClick = (type: string) => {
@@ -35,7 +39,6 @@ class My extends Component {
 
   render() {
     const { info } = this.props.userStore;
-
     return (
       <View className="box">
         <View className="info">
@@ -57,11 +60,13 @@ class My extends Component {
           <Text>积分 {info.experience}</Text>
         </View>
         <AtList>
-          <AtListItem
-            title="个人资料"
-            arrow="right"
-            onClick={this.onClick.bind(this, 'info')}
-          />
+          {info.id != '' && (
+            <AtListItem
+              title="个人资料"
+              arrow="right"
+              onClick={this.onClick.bind(this, 'info')}
+            />
+          )}
           <AtListItem title="我的课程" arrow="right" />
           <AtListItem title="我的订单" arrow="right" />
         </AtList>

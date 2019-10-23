@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
   const user = await db
     .collection("user")
     .where({
-      openId: cmd.eq(wxContext.OPENID)
+      openId: cmd.eq(event.id || wxContext.OPENID)
     })
     .get();
 
