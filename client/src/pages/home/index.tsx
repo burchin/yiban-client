@@ -25,6 +25,7 @@ class Home extends Component {
           <Text>
             进展：\r\n
             2019-10-21 个人中心界面 \r\n
+            2019-10-24 个人中心-用户加入会员功能 \r\n
             ===================================
           </Text>
           {content.map(text => (
