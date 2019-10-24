@@ -9,7 +9,7 @@ class UserStore {
     Taro.cloud.callFunction({
       name: 'getUserInfo'
     }).then(res => {
-      if (res.result._id == undefined) {
+      if (res.result.id == undefined) {
         this.info.openId = res.result.openId;
       } else {
         this.info = res.result;

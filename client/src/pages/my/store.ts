@@ -5,7 +5,7 @@ class Store {
   @action
   join = () => {
     Taro.cloud.callFunction({
-      name: 'joinUser'
+      name: 'joinNewUser'
     }).then(res => {
       console.log(res);
     }).catch(err => {

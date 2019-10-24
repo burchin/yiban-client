@@ -48,7 +48,7 @@ class My extends Component {
           <View className="nickName">
             <OpenData type="userNickName" className="name" />
             {info.id == '' && (
-              <AtButton type="primary" size="small" circle={true}>
+              <AtButton type="primary" size="small" circle={true} onClick={this.onJoin}>
                 点击加入
               </AtButton>
             )}

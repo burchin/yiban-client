@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
 
   let result = null;
   if (user.data.length > 0) {
-    const data = user.data;
+    const data = user.data[0];
     result = {
       id: data._id,
       openId: data.openId,
