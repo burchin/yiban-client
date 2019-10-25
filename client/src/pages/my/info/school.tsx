@@ -13,18 +13,18 @@ type IProps = {
   };
 };
 
-interface UserName {
+interface UserSchool {
   props: IProps;
 }
 
 @inject('userStore')
 @observer
-class UserName extends Component {
+class UserSchool extends Component {
   store = new Store({
     user: this.props.userStore
   });
   config: Config = {
-    navigationBarTitleText: '更改姓名'
+    navigationBarTitleText: '更改学校'
   };
 
   onChange = e => {
@@ -32,16 +32,16 @@ class UserName extends Component {
   };
 
   onClick = () => {
-    this.store.setUserInfo('name', this.store.name);
+    this.store.setUserInfo('school', this.store.school);
   };
 
   render() {
-    const { name } = this.store;
+    const { school } = this.store;
     return (
       <View className="box">
         <Input
           className="input"
-          value={name}
+          value={school}
           onInput={this.onChange}
         />
         <AtButton type="primary" onClick={this.onClick}>
@@ -52,4 +52,4 @@ class UserName extends Component {
   }
 }
 
-export default UserName as ComponentType;
+export default UserSchool as ComponentType;

@@ -31,6 +31,9 @@ class UserInfo extends Component {
       case 'name':
         Taro.navigateTo({ url: './name' });
         break;
+      case 'school':
+        Taro.navigateTo({ url: './school' });
+        break;
     }
   };
 
@@ -64,6 +67,7 @@ class UserInfo extends Component {
           title="学校"
           extraText={this.isEmpty(info.school)}
           arrow="right"
+          onClick={this.onClick.bind(this, 'school')}
         />
         <AtListItem title="加入时间" extraText={info.joinTime} />
       </AtList>

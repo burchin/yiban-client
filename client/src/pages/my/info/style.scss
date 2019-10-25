@@ -1,7 +1,11 @@
 @import '../../../assets/styles/common.scss';
 
-.input {
+.box {
+  padding: 16px;
+
+  .input {
     font-size: $content-size;
     margin-bottom: 60px;
-    border-bottom: 1px solid #6190E8;
+    border-bottom: 1px solid #6190e8;
+  }
 }

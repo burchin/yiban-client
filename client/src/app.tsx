@@ -16,6 +16,7 @@ class App extends Component {
       'pages/my/index',
       'pages/my/info/index',
       'pages/my/info/name',
+      'pages/my/info/school',
       'pages/manage/index'
     ],
     subPackages: [

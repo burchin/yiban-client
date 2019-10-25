@@ -9,6 +9,7 @@ interface IProps {
 class Store {
   userStore: UserStore;
   @observable name: string = '';
+  @observable school: string = '';
 
   constructor(props: IProps) {
     this.userStore = props.user;
@@ -17,8 +18,12 @@ class Store {
 
   @action
   setName = (value: string) => {
-    console.log(value);
     this.name = value;
+  };
+
+  @action
+  setSchool = (value: string) => {
+    this.school = value;
   };
 
   @action
