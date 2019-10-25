@@ -10,6 +10,7 @@ class Store {
   userStore: UserStore;
   @observable name: string = '';
   @observable school: string = '';
+  @observable tel: string = '';
 
   constructor(props: IProps) {
     this.userStore = props.user;
@@ -24,6 +25,11 @@ class Store {
   @action
   setSchool = (value: string) => {
     this.school = value;
+  };
+
+  @action
+  setTel = (value: string) => {
+    this.tel = value;
   };
 
   @action

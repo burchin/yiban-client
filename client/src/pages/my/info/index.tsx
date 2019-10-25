@@ -34,6 +34,9 @@ class UserInfo extends Component {
       case 'school':
         Taro.navigateTo({ url: './school' });
         break;
+      case 'tel':
+        Taro.navigateTo({ url: './mobile' });
+        break;
     }
   };
 
@@ -57,6 +60,7 @@ class UserInfo extends Component {
           title="联系电话"
           extraText={this.isEmpty(info.tel)}
           arrow="right"
+          onClick={this.onClick.bind(this, 'tel')}
         />
         <AtListItem
           title="生日"
