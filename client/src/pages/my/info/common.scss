@@ -1,0 +1,11 @@
+@import '../../../assets/styles/common.scss';
+
+.box {
+  padding: 32px;
+
+  .input {
+    font-size: $content-size;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #6190e8;
+  }
+}

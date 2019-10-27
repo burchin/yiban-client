@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 import { User } from '@model';
 
 class UserStore {
@@ -18,6 +18,11 @@ class UserStore {
       console.log(err);
     });
   }
+
+  @action
+  setInfo = (field: string, value: any) => {
+    this.info[field] = value;
+  };
 }
 
 export default UserStore;

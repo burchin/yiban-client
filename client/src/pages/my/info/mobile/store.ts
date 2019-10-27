@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 import { observable, action } from 'mobx';
-import UserStore from '../../../store/user';
+import UserStore from '../../../../store/user';
 
 interface IProps {
   user: UserStore;
@@ -8,32 +8,32 @@ interface IProps {
 
 class Store {
   userStore: UserStore;
-
-  // 性别数据
-  sexData: Array<{ value: string; checked: boolean; text: string }> = [
-    { value: '0', checked: true, text: '男' },
-    { value: '1', checked: false, text: '女' }
-  ];
+  @observable tel: string = '';
 
   constructor(props: IProps) {
     this.userStore = props.user;
+    this.tel = this.userStore.info.tel;
   }
 
   @action
-  setUserInfo = (field: string, value: any) => {
+  setTel = (value: string) => {
+    this.tel = value;
+  };
+
+  @action
+  setInfo = (value: string) => {
     const data = {
       id: this.userStore.info.id,
-      field,
+      field: 'tel',
       value
     };
-    console.log(data);
     Taro.cloud
       .callFunction({
         name: 'updateUserInfo',
         data
       })
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        this.userStore.setInfo('tel', value);
       })
       .catch(err => {
         console.log(err);

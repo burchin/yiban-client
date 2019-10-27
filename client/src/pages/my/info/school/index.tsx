@@ -3,45 +3,43 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { observer, inject } from '@tarojs/mobx';
 import { View, Input } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
-import { User } from '@model';
+import UserStore from '../../../../store/user';
 import Store from './store';
 import './style.scss';
 
 type IProps = {
-  userStore: {
-    info: User;
-  };
+  userStore: UserStore;
 };
 
-interface UserName {
+interface UserSchool {
   props: IProps;
 }
 
 @inject('userStore')
 @observer
-class UserName extends Component {
+class UserSchool extends Component {
   store = new Store({
     user: this.props.userStore
   });
   config: Config = {
-    navigationBarTitleText: '更改姓名'
+    navigationBarTitleText: '更改学校'
   };
 
   onChange = e => {
-    this.store.setName(e.detail.value);
+    this.store.setSchool(e.detail.value);
   };
 
   onClick = () => {
-    this.store.setUserInfo('name', this.store.name);
+    this.store.setInfo(this.store.school);
   };
 
   render() {
-    const { name } = this.store;
+    const { school } = this.store;
     return (
       <View className="box">
         <Input
           className="input"
-          value={name}
+          value={school}
           onInput={this.onChange}
         />
         <AtButton type="primary" onClick={this.onClick}>
@@ -52,4 +50,4 @@ class UserName extends Component {
   }
 }
 
-export default UserName as ComponentType;
+export default UserSchool as ComponentType;

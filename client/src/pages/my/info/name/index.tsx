@@ -3,28 +3,26 @@ import Taro, { Component, Config } from '@tarojs/taro';
 import { observer, inject } from '@tarojs/mobx';
 import { View, Input } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
-import { User } from '@model';
+import UserStore from '../../../../store/user';
 import Store from './store';
 import './style.scss';
 
 type IProps = {
-  userStore: {
-    info: User;
-  };
+  userStore: UserStore;
 };
 
-interface UserMobile {
+interface UserName {
   props: IProps;
 }
 
 @inject('userStore')
 @observer
-class UserMobile extends Component {
+class UserName extends Component {
   store = new Store({
     user: this.props.userStore
   });
   config: Config = {
-    navigationBarTitleText: '更改联系电话'
+    navigationBarTitleText: '更改姓名'
   };
 
   onChange = e => {
@@ -32,16 +30,16 @@ class UserMobile extends Component {
   };
 
   onClick = () => {
-    this.store.setUserInfo('tel', this.store.tel);
+    this.store.setInfo(this.store.name);
   };
 
   render() {
-    const { tel } = this.store;
+    const { name } = this.store;
     return (
       <View className="box">
         <Input
           className="input"
-          value={tel}
+          value={name}
           onInput={this.onChange}
         />
         <AtButton type="primary" onClick={this.onClick}>
@@ -52,4 +50,4 @@ class UserMobile extends Component {
   }
 }
 
-export default UserMobile as ComponentType;
+export default UserName as ComponentType;
