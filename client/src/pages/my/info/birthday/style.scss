@@ -1,0 +1,16 @@
+@import '../../../../assets/styles/common.scss';
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0 28px;
+  padding: 28px 8px 28px 0;
+  color: #333;
+  font-size: 32px;
+  border-bottom: 1px solid #eee;
+
+  .arrow {
+    width: 52px;
+    height: 52px;
+  }
+}

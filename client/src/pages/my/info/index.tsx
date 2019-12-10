@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { observer, inject } from '@tarojs/mobx';
-import { View, Button, Radio, RadioGroup } from '@tarojs/components';
+import { View, Button, Radio, RadioGroup, Text, Image } from '@tarojs/components';
 import {
   AtList,
   AtListItem,
@@ -10,8 +10,10 @@ import {
   AtModalContent,
   AtModalAction
 } from 'taro-ui';
+import Birthday from './birthday';
 import UserStore from '../../../store/user';
 import Store from './store';
+import './style.scss';
 
 type IProps = {
   userStore: UserStore;
@@ -46,13 +48,28 @@ class UserInfo extends Component {
       case 'tel':
         Taro.navigateTo({ url: './mobile/index' });
         break;
+      case 'sex':
+        this.store.setIsShowSexModal(true);
+        break;
     }
   };
 
-  handleChange = () => {};
+  onSexChange = (e) => {
+    this.store.setSex(Number(e.detail.value));
+  };
+
+  onCloseSexModal = () => {
+    this.store.setIsShowSexModal(false);
+  };
+
+  onConfirmSexModal = () => {
+    this.store.setInfo('sex', this.store.sex);
+    this.store.setIsShowSexModal(false);
+  };
 
   render() {
     const { info } = this.props.userStore;
+    const { isShowSexModal } = this.store;
     return (
       <View>
         <AtList>
@@ -66,6 +83,7 @@ class UserInfo extends Component {
             title="性别"
             extraText={info.sex ? '女' : '男'}
             arrow="right"
+            onClick={this.onClick.bind(this, 'sex')}
           />
           <AtListItem title="年龄" extraText={`${info.age}岁`} arrow="right" />
           <AtListItem
@@ -74,11 +92,8 @@ class UserInfo extends Component {
             arrow="right"
             onClick={this.onClick.bind(this, 'tel')}
           />
-          <AtListItem
-            title="生日"
-            extraText={this.isEmpty(info.birthday)}
-            arrow="right"
-          />
+          <Birthday value="test" onChange={()=>{console.log('')}} />
+          
           <AtListItem
             title="学校"
             extraText={this.isEmpty(info.school)}
@@ -87,13 +102,13 @@ class UserInfo extends Component {
           />
           <AtListItem title="加入时间" extraText={info.joinTime} />
         </AtList>
-        <AtModal isOpened={false}>
-          <AtModalHeader>标题</AtModalHeader>
+        <AtModal isOpened={isShowSexModal}>
+          <AtModalHeader>选择性别</AtModalHeader>
           <AtModalContent>
-            <RadioGroup>
+            <RadioGroup onChange={this.onSexChange}>
               {this.store.sexData.map(item => {
                 return (
-                  <View>
+                  <View key={item.value} className="sexItem">
                     <Radio
                       value={item.value}
                       checked={item.checked}
@@ -107,7 +122,8 @@ class UserInfo extends Component {
             </RadioGroup>
           </AtModalContent>
           <AtModalAction>
-            <Button>取消</Button> <Button>确定</Button>{' '}
+            <Button onClick={this.onCloseSexModal}>取消</Button>
+            <Button onClick={this.onConfirmSexModal}>保存</Button>
           </AtModalAction>
         </AtModal>
       </View>

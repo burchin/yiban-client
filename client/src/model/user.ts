@@ -8,7 +8,7 @@ class User {
   openId: string = '';
   // 姓名
   name: string = '';
-  // 性别
+  // 性别 0:男 1:女
   sex: number = 0;
   // 年龄
   age: number = 1;
